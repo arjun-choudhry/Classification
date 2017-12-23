@@ -31,3 +31,11 @@ X[:,[1,2]] = sc_X.fit_transform(X[:,[1,2]])
 
 from sklearn.cross_validation import train_test_split
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2)
+
+# Fitting Logistic Regression to the training set
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state = 0)
+classifier.fit(X_train,y_train)
+
+# Predicting the model on the test set
+y_pred = classifier.predict(X_test)

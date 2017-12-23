@@ -38,7 +38,6 @@ cm = confusion_matrix(y_test,y_pred)
 #Plotting the map
 from matplotlib.colors import ListedColormap
 X_set, y_set = X_train, y_train
-# The below line allows us to create the grid of the plot that we want to plot. So, we take the minimum of the age column-1, maximum of age column +1 and give the step configuration of 0.01. Hence, using this we create the pixels along the AGE axis that we want in the plot. We do the same for the Salary axis. These values are then assigned to X1 and X2.
 X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
                      np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 0.01))
 
@@ -49,7 +48,7 @@ plt.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('Classifier (Test set)')
+plt.title('K-NN (Test set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()

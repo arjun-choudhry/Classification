@@ -19,3 +19,15 @@ X = sc_X.fit_transform(X)
 
 from sklearn.cross_validation import train_test_split
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25,random_state=0)
+
+# fitting the kernel svm
+from sklearn.svm import SVC
+kernelClassifier = SVC(kernel = 'rbf', random_state=0)
+kernelClassifier.fit(X_train,y_train)
+
+# Predicitng the values
+y_pred = kernelClassifier.predict(X_test)
+
+# Validating the model using confusion matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test,y_pred)
